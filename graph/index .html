@@ -1,0 +1,76 @@
+
+<!doctype html>
+<html>
+  <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="style.css">
+
+    <title>Busquedas ciegas IA</title>
+</head>
+
+<body>
+  
+  <h1 class="bar-item sdtitle">Menu</h1>
+  <header>
+
+    <div class="centrar">
+    <table>
+    <nav>
+      <ul>
+        <tr>
+          <td>
+            <li class="bloque1">Grafo</li> 
+            <button class="button button1" id="crear">Crear Grafo</button>
+          </td>
+          <td>
+            <div>
+              <li class="bloque1">Seleccionar vértices
+                <div class="button-group">
+                  <button id="seleccionarInicio" class="btn-primary">Inicio</button>
+                  <button id="seleccionarFin" class="btn-secondary">Final</button>
+                  <button id="borrarNodo" class="btn-tertiary">Borrar</button>
+                </div> 
+              </li>
+              </div> 
+          </td>
+        </tr>      
+      <tr>
+        <td>
+          <li class="bloque2"> Porcentaje de vértices a eliminar</li>
+            <div>
+              <li class="w3-bar-item" style="flex: 0.5;" ></li>
+                <input style="display:inline" class="button-6 " type="number" id="porcentaje" name="porcentaje" min="0" max="100" value="50">
+                <button id="eliminar_porcentaje" class="button button1">Borrar</button>
+                <label class="switch" >
+                </div>
+              
+        </td>
+         <td>
+          <li class="bloque2">Búsquedas
+              <div class="btn-group" role="group" aria-label="Basic example">
+                <button id="dfs" type="button" class="button button1">DFS</button>
+                <button id="bfs" type="button" class="button button1">BFS</button>
+              </div>
+            </li>
+         </td>
+      </tr>
+
+      </ul>
+    </nav>
+    </table>
+    </div>
+  </header>  
+  <div  id="contenido" class="w=100">
+    <div class="container"> 
+          <div id="matrix" class=""></div>
+    </div>
+</div>
+
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+    <script src="UI.js"></script>
+    <script src="grafo.js"></script>
+    <script src="menu.js"></script>
+</body>
+  
+</html>
