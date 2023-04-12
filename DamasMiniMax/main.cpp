@@ -17,11 +17,11 @@ int Depth;
      
  };
 /*int tablaDamas[TamTabla][TamTabla] = {
-   {0, -1, 0, 0, 0, 0, 0, 0},
    {0, 0, 0, 0, 0, 0, 0, 0},
    {0, 0, 0, 0, 0, 0, 0, 0},
    {0, 0, 0, 0, 0, 0, 0, 0},
-   {0, 0, 0, -1, 0, 0, 0, 0},
+   {0, 0, 0, 0, 0, 0, 0, 0},
+   {0, 0, 0, 0, 0, 0, 0, 0},
    {1, 0, 1, 0, 1, 0, 1, 0},
    {0, 1, 0, 1, 0, 1, 0, 1},
    {1, 0, 1, 0, 1, 0, 1, 0}
@@ -35,17 +35,18 @@ int Depth;
       {
         if(tablaDamas[i][j] == 1)
         {
-          if(tablaDamas[i-1][j-1]==0 && i-1<8 && i-1>=0 && j-1<8 && j-1>=0)
+          if(tablaDamas[i-1][j-1]==0 && i-1<TamTabla && i-1>=0 && j-1<TamTabla && j-1>=0)
               movimiento=true;
-          if(tablaDamas[i-1][j+1]==0 && i-1<8 && i-1>=0 && j+1<8 && j+1>=0)
+          if(tablaDamas[i-1][j+1]==0 && i-1<TamTabla && i-1>=0 && j+1<TamTabla && j+1>=0)
               movimiento=true;
-          if(tablaDamas[i-2][j-2]==0 && i-2<8 && i-2>=0 && j-2<8 && j-2>=0)
+          if(tablaDamas[i-2][j-2]==0 && i-2<TamTabla && i-2>=0 && j-2<TamTabla && j-2>=0)
               movimiento=true;
-          if(tablaDamas[i-2][j+2]==0 && i-2<8 && i-2>=0 && j+2<8 && j+2>=0)
+          if(tablaDamas[i-2][j+2]==0 && i-2<TamTabla && i-2>=0 && j+2<TamTabla && j+2>=0)
               movimiento=true;
         }
       }
     }
+      //cout<<"Mov: "<<movimiento<<endl;
     return movimiento;
   }
 void PasarTabla(int t[TamTabla][TamTabla], int t2[TamTabla][TamTabla])
@@ -61,14 +62,14 @@ void PasarTabla(int t[TamTabla][TamTabla], int t2[TamTabla][TamTabla])
 /*class movimiento
 {
 public:
-    int tablerinho[8][8];
+    int tablero[TamTabla][TamTabla];
     movimiento(){}
-  movimiento(int t[8][8]){
-    PasarTabla(tablerinho,t);
+  movimiento(int t[TamTabla][TamTabla]){
+    PasarTabla(tablero,t);
   }
 };
 
-vector<movimiento> SaveTablerinho;
+vector<movimiento> JugadasHechas;
 */
 
  int FuncionUtilidad(int tablaDama[TamTabla][TamTabla]) {
@@ -151,7 +152,7 @@ public:
                   int posy = j + MovPersoBot[l].second;
 
                 if (posx >= 0 && posx < TamTabla && posy >= 0 && posy < TamTabla && tablaDama[posx][posy] == 0) {
-                  // movimiento simple
+                  // movimiento
                     tablaDama[i][j] = 0;
                     tablaDama[posx][posy] = PersoBot;
                     NodoMiniMax child(tablaDama, depth + 1);
@@ -248,8 +249,8 @@ void MovDerecha(int x, int y)
         {
             tablaDamas[x][y] = 0;
             tablaDamas[x-1][y+1] = 1;
-            //movimiento tablerinho(tablaDamas);
-            //SaveTablerinho.push_back(tablerinho);
+            //movimiento judada(tablaDamas);
+            //JugadasHechas.push_back(judada);
         }
     }
 }
@@ -262,8 +263,8 @@ void MovIzquierda(int x, int y)
         {
             tablaDamas[x][y] = 0;
             tablaDamas[x-1][y-1] = 1;
-            //movimiento tablerinho(tablaDamas);
-            //SaveTablerinho.push_back(tablerinho);
+            //movimiento judada(tablaDamas);
+            //JugadasHechas.push_back(judada);
         }
     }
 }
@@ -277,8 +278,8 @@ void ComerIzquierda(int x, int y)
             tablaDamas[x][y]=0;
             tablaDamas[x-2][y-2]=1;
             tablaDamas[x-1][y-1]=0;
-            //movimiento tablerinho(tablaDamas);
-            //SaveTablerinho.push_back(tablerinho);
+            //movimiento judada(tablaDamas);
+            //JugadasHechas.push_back(judada);
         }
     }
 }
@@ -292,8 +293,8 @@ void ComerDerecha(int x,int y)
             tablaDamas[x][y]=0;
             tablaDamas[x-2][y+2]=1;
             tablaDamas[x-1][y+1]=0;
-            //movimiento tablerinho(tablaDamas);
-            //SaveTablerinho.push_back(tablerinho);
+            //movimiento judada(tablaDamas);
+            //JugadasHechas.push_back(judada);
         }
     }
 }
@@ -358,11 +359,11 @@ int main(){
         }
         PasarTabla(tablaDamas,root.MejorTablaDama);
         //Imprimir();
-        //movimiento tablerinho(tablaDamas);
-        //SaveTablerinho.push_back(tablerinho);
+        //movimiento judada(tablaDamas);
+        //JugadasHechas.push_back(judada);
     }
       PersoBot = (!PersoBot); //CAMBIAR TURNOS
-      //cout<<"TamTabla: "<<SaveTablerinho.size()<<endl;
+      //cout<<"TamTabla: "<<JugadasHechas.size()<<endl;
   }
 
   SaberGanador();
